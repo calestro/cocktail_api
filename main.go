@@ -1,7 +1,8 @@
 package main
 
 import (
-	"cocktail/bin/routes"
+	"cocktail/bin/routes/api_router"
+	"cocktail/bin/services/serial_comunication"
 	"fmt"
 	"net/http"
 
@@ -10,11 +11,12 @@ import (
 )
 
 func main() {
+
+	serial_comunication.Teste()
 	r := chi.NewRouter()
 	r.Use(middleware.DefaultLogger)
-	r.Use(middleware.RouteHeaders().Handler)
 
-	routes.GetEndpoints(r)
+	api_router.GetEndpoints(r)
 
 	fmt.Println("start")
 

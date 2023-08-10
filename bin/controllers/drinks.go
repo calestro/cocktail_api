@@ -9,7 +9,12 @@ import (
 
 func Get_Drinks(w http.ResponseWriter, r *http.Request) {
 	var search []models.DrinkModel
+
 	db().Find(&search)
 
-	render.JSON(w, r, search)
+	res := map[string]*[]models.DrinkModel{
+		"data": &search,
+	}
+
+	render.JSON(w, r, res)
 }
