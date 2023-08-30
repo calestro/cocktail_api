@@ -2,7 +2,7 @@ package main
 
 import (
 	"cocktail/bin/routes/api_router"
-	"cocktail/bin/services/serial_comunication"
+	"cocktail/bin/services/database"
 	"fmt"
 	"net/http"
 
@@ -11,14 +11,11 @@ import (
 )
 
 func main() {
-
-	serial_comunication.Teste()
 	r := chi.NewRouter()
 	r.Use(middleware.DefaultLogger)
-
 	api_router.GetEndpoints(r)
-
 	fmt.Println("start")
+	database.DbConnection()
 
 	http.ListenAndServe(":8282", r)
 

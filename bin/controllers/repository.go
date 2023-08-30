@@ -7,5 +7,5 @@ import (
 )
 
 func db() *gorm.DB {
-	return database.DbConnection()
+	return database.Db
 }

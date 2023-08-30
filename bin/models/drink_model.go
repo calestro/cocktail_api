@@ -1,10 +1,7 @@
 package models
 
-import "gorm.io/gorm"
-
 type DrinkModel struct {
-	gorm.Model
-	ID     int
+	ID     uint   `gorm:"primarykey"`
 	Name   string `validate:"required"`
-	Recipe string `validate:"required" `
+	Recipe string `json:"recipe", validate:"required"`
 }

@@ -7,13 +7,16 @@ import (
 	"gorm.io/gorm"
 )
 
-func DbConnection() *gorm.DB {
+var Db *gorm.DB
+
+func DbConnection() {
 	dsn := "host=localhost user=postgres password=25265459 dbname=postgres port=5432 sslmode=disable TimeZone=Asia/Shanghai"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	if err != nil {
 		panic("Connect REFUSED")
 	}
-	db.AutoMigrate(&models.DrinkModel{})
-	return db
+	db.AutoMigrate(&models.PositionDrinks{}, &models.DrinkModel{})
+
+	Db = db
 }

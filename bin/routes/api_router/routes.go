@@ -12,6 +12,9 @@ func GetEndpoints(r *chi.Mux) {
 
 	r.Get("/ping", controllers.Get_Ping)
 
+	r.Get("/position", controllers.Get_Position)
+	r.Post("/position", controllers.POST_Position)
+
 	///////*****/	Drinks	/**********///////
 	r.Get("/drinks", controllers.Get_Drinks)
 
