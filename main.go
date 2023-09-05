@@ -15,7 +15,9 @@ func main() {
 	r.Use(middleware.DefaultLogger)
 	api_router.GetEndpoints(r)
 	fmt.Println("start")
-	database.DbConnection()
+
+	database.Connection()
+	//serials.Connection()
 
 	http.ListenAndServe(":8282", r)
 

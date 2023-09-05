@@ -6,27 +6,14 @@ import (
 	"github.com/tarm/serial"
 )
 
-func Teste() {
-	c := &serial.Config{Name: "tty0", Baud: 115200}
-	s, err := serial.OpenPort(c)
-	if err != nil {
-		log.Fatal(err)
-	}
+var SerialConnect *serial.Port
 
-	s.Write([]byte("200f200b"))
-}
-
-func Service() *serial.Port {
+func Connection() {
 	c := &serial.Config{Name: "COM45", Baud: 115200}
 	s, err := serial.OpenPort(c)
 	if err != nil {
 		log.Fatal(err)
 	}
+	SerialConnect = s
 
-	return s
-
-}
-
-func SerialSender(recipe string) {
-	Service().Write([]byte(recipe))
 }
