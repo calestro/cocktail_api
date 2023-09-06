@@ -2,7 +2,9 @@ package main
 
 import (
 	"cocktail/bin/routes/api_router"
+	"cocktail/bin/services/alexa_maker"
 	"cocktail/bin/services/database"
+	"cocktail/bin/services/serials"
 	"fmt"
 	"net/http"
 
@@ -17,8 +19,10 @@ func main() {
 	fmt.Println("start")
 
 	database.Connection()
-	//serials.Connection()
+	serials.Connection()
 
 	http.ListenAndServe(":8282", r)
+
+	alexa_maker.DevicesCreate()
 
 }
